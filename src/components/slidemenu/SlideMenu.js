@@ -34,11 +34,12 @@ export class SlideMenuSub extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeItem: null
+            activeItem: null,
+            renderSubMenu: {},
         };
     }
 
-    onItemClick(event, item) {
+    onItemClick(event, item, index) {
         if (item.disabled) {
             event.preventDefault();
             return;
@@ -56,9 +57,12 @@ export class SlideMenuSub extends Component {
         }
 
         if (item.items) {
+            let key = item.label + '_' + index
             this.setState({
+                renderSubMenu: { ...this.state.renderSubMenu, [key]: true },
                 activeItem: item
             });
+            console.log(this.state.renderSubMenu)
             this.props.onForward();
         }
     }
@@ -71,6 +75,7 @@ export class SlideMenuSub extends Component {
 
     renderSubmenu(item) {
         if (item.items) {
+            console.log("Sub Menu rendering..")
             return (
                 <SlideMenuSub model={item.items} index={this.props.index + 1} menuWidth={this.props.menuWidth} effectDuration={this.props.effectDuration}
                     onForward={this.props.onForward} parentActive={item === this.state.activeItem} />
@@ -88,7 +93,6 @@ export class SlideMenuSub extends Component {
         const icon = item.icon && <span className={iconClassName}></span>;
         const label = item.label && <span className="p-menuitem-text">{item.label}</span>;
         const submenuIcon = item.items && <span className={submenuIconClassName}></span>;
-        const submenu = this.renderSubmenu(item);
         let content = (
             <a href={item.url || '#'} className="p-menuitem-link" target={item.target} onClick={(event) => this.onItemClick(event, item, index)} aria-disabled={item.disabled}>
                 {icon}
@@ -115,7 +119,7 @@ export class SlideMenuSub extends Component {
         return (
             <li key={item.label + '_' + index} className={className} style={item.style}>
                 {content}
-                {submenu}
+                {this.state.renderSubMenu[item.label + '_' + index] && this.renderSubmenu(item)}
             </li>
         );
     }
