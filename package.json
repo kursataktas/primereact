@@ -4,7 +4,7 @@
   "homepage": ".",
   "repository": {
     "type": "git",
-    "url": "https://github.com/primefaces/primereact.git"
+    "url": "https://github.com/kursataktas/primereact"
   },
   "license": "MIT",
   "keywords": [
@@ -65,8 +65,7 @@
     "build-lib": "npm run compile-components && npm run build-resources && npm run build-exports",
     "compile-components": "./node_modules/\\@babel/cli/bin/babel.js src/components --out-dir dist/components --presets=@babel/env,@babel/react --plugins=@babel/plugin-proposal-class-properties --copy-files",
     "build-resources": "gulp build-resources",
-    "build-exports": "gulp build-exports",
-    "prepare": "npm run compile-components && npm run build-resources && npm run build-exports"
+    "build-exports": "gulp build-exports"
   },
   "eslintConfig": {
     "extends": "react-app"
