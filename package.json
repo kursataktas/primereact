@@ -67,7 +67,7 @@
     "compile-components": "./node_modules/\\@babel/cli/bin/babel.js src/components --out-dir dist/components --presets=@babel/env,@babel/react --plugins=@babel/plugin-proposal-class-properties --copy-files",
     "build-resources": "gulp build-resources",
     "build-exports": "gulp build-exports",
-    "postinstall": "cp dist/* ."
+    "postinstall": "cp -r ./dist/* ./"
   },
   "eslintConfig": {
     "extends": "react-app"
