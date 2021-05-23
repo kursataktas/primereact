@@ -62,7 +62,6 @@ export class SlideMenuSub extends Component {
                 renderSubMenu: { ...this.state.renderSubMenu, [key]: true },
                 activeItem: item
             });
-            console.log(this.state.renderSubMenu)
             this.props.onForward();
         }
     }
@@ -75,7 +74,6 @@ export class SlideMenuSub extends Component {
 
     renderSubmenu(item) {
         if (item.items) {
-            console.log("Sub Menu rendering..")
             return (
                 <SlideMenuSub model={item.items} index={this.props.index + 1} menuWidth={this.props.menuWidth} effectDuration={this.props.effectDuration}
                     onForward={this.props.onForward} parentActive={item === this.state.activeItem} />

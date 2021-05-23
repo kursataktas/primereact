@@ -102,7 +102,6 @@ var SlideMenuSub = /*#__PURE__*/function (_Component) {
           renderSubMenu: _objectSpread(_objectSpread({}, this.state.renderSubMenu), {}, _defineProperty({}, key, true)),
           activeItem: item
         });
-        console.log(this.state.renderSubMenu);
         this.props.onForward();
       }
     }
@@ -118,7 +117,6 @@ var SlideMenuSub = /*#__PURE__*/function (_Component) {
     key: "renderSubmenu",
     value: function renderSubmenu(item) {
       if (item.items) {
-        console.log("Sub Menu rendering..");
         return /*#__PURE__*/_react.default.createElement(SlideMenuSub, {
           model: item.items,
           index: this.props.index + 1,
